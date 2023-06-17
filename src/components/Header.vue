@@ -45,14 +45,14 @@
                       <td class="fw-bold">{{ producto.precio }}</td>
                       <td class="flex align-items-start gap-4">
                         <button
-                          @click="$emit('decrementar-cantidad')"
+                          @click="$emit('decrementar-cantidad', producto.id)"
                           type="button"
                           class="btn btn-dark"
                         >
                           -
                         </button>
                         {{ producto.cantidad }}
-                        <button @click="$emit('incrementar-cantidad')" type="button" class="btn btn-dark">+</button>
+                        <button @click="$emit('incrementar-cantidad', producto.id)" type="button" class="btn btn-dark">+</button>
                       </td>
                       <td>
                         <button class="btn btn-danger" type="button">X</button>

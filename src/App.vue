@@ -44,12 +44,16 @@ const agregarCarrito = (guitarra) => {
   }
 };
 
-const decrementarCantidad = () => {
-  alert('Quitar')
+const decrementarCantidad = (id) => {
+  const index = carrito.value.findIndex(producto => producto.id === id);
+  if (carrito.value[index].cantidad <=1  ) return;
+  carrito.value[index].cantidad--;
 };
 
-const incrementarCantidad = () => {
-  alert('Dar')
+const incrementarCantidad = (id) => {
+  const index = carrito.value.findIndex(producto => producto.id === id);
+  if (carrito.value[index].cantidad >=5  ) return;
+  carrito.value[index].cantidad++;
 };
 </script>
 
