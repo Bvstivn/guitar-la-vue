@@ -1,8 +1,11 @@
 <template>
   <Header
     :carrito="carrito"
+    :guitarra="guitarra"
+    @agregar-carrito="agregarCarrito"
     @incrementar-cantidad="incrementarCantidad"
     @decrementar-cantidad="decrementarCantidad"
+    @eliminar-producto="eliminarProducto"
   ></Header>
   <main class="container-xl mt-5">
     <h2 class="text-center">Nuestra Colección</h2>
@@ -27,9 +30,11 @@ import Footer from "./components/Footer.vue";
 
 const guitarras = ref([db]);
 const carrito = ref([]);
+const guitarra = ref({});
 
 onMounted(() => {
   guitarras.value = db;
+  guitarra.value = db[3];
 });
 
 const agregarCarrito = (guitarra) => {
@@ -54,6 +59,10 @@ const incrementarCantidad = (id) => {
   const index = carrito.value.findIndex(producto => producto.id === id);
   if (carrito.value[index].cantidad >=5  ) return;
   carrito.value[index].cantidad++;
+};
+
+const eliminarProducto = (id) => {
+  carrito.value = carrito.value.filter(producto => producto.id !== id);
 };
 </script>
 
