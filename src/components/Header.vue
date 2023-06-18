@@ -33,7 +33,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="producto in carrito">
+                    <tr v-for="producto in carrito" :key="producto.id">
                       <td>
                         <img
                           class="img-fluid"
@@ -76,7 +76,10 @@
                 <p class="text-end">
                   Total pagar: <span class="fw-bold">${{ totalPagar }}</span>
                 </p>
-                <button class="btn btn-dark w-100 mt-3 p-2">
+                <button
+                  @click="$emit('vaciar-carrito')"
+                  class="btn btn-dark w-100 mt-3 p-2"
+                >
                   Vaciar Carrito
                 </button>
               </div>
@@ -130,7 +133,8 @@ defineEmits(
   "dincrementar-cantidad",
   "decrementar-cantidad",
   "agregar-carrito",
-  "eliminar-producto"
+  "eliminar-producto",
+  "vaciar-carrito"
 );
 
 const totalPagar = computed(() => {
